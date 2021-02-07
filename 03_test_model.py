@@ -61,8 +61,8 @@ model = tf.keras.models.load_model(MODEL_NAME)
 GAME_WIDTH = 1280
 GAME_HEIGHT = 720
 
-# x, x_w, y, y_h. 这些数据获取自 get_vertices.py
-# x, x_w, y, y_h. Get this data from get_vertices.py
+# x, x_w, y, y_h. 这些数据获取自 getvertices.py
+# x, x_w, y, y_h. Get this data from getvertices.py
 x=190
 x_w=290
 y=30

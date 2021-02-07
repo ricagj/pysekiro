@@ -32,8 +32,8 @@ def get_model(width, height, frame_count, outputs):
 
 
 
-# x, x_w, y, y_h. 这些数据获取自 get_vertices.py
-# x, x_w, y, y_h. Get this data from get_vertices.py
+# x, x_w, y, y_h. 这些数据获取自 getvertices.py
+# x, x_w, y, y_h. Get this data from getvertices.py
 x=190
 x_w=290
 y=30
@@ -107,13 +107,13 @@ train(boss1, start=1, end=1)
     ...
     training_data-100.npy
     
-依次读取数据，逐个训练
-当然，也可以指定开始和结束的文件
+依次读取数据集，逐个训练。
+当然，也可以指定开始和结束的文件。
 e.g.
     start=15, end=36
 怎么选择取决于你。
 
-Read the data in turn and train one by one.
+Read the dataset in turn and train one by one.
 Of course, you can also specify the start and end files.
 e.g. 
     start=15, end=36
