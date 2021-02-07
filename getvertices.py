@@ -65,13 +65,13 @@ def get_vertices(img):
 
 
 if __name__ == '__main__':
-    # 1
+    # demo_01
     img = cv2.imread("demo_getvertices.png", 0)
     vertices = get_vertices(img)
 
-    # 2
+    # demo_02
     # boss = 'Genichiro_Ashina' # 苇名弦一郎
     # data = np.load(os.path.join('The_battle_memory', boss, f'training_data-1.npy'), allow_pickle=True)
-    # n = 150 # 1
+    # n = 150 # 0 ~ 199
     # img = data[n][0]
     # vertices = get_vertices(img)
