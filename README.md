@@ -7,16 +7,15 @@ https://github.com/analoganddigital/DQN_play_sekiro
 
 # Preparation
 
-## Install Anaconda3 first
+#### Install Anaconda3 first
 https://www.anaconda.com/
 
-## Create a virtual environment and install dependencies
-- requirements
-  - 
+#### Create a virtual environment and install dependencies
 ~~~shell
 conda create -n pysekiro python=3.8
 conda activate pysekiro
 conda install pandas
+conda install pywin32
 pip install opencv-python>=4.0
 pip install tensorflow>=2.0
 ~~~
