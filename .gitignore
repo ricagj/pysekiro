@@ -1,0 +1,4 @@
+**/*.npy
+**/*.pyc
+**/.ipynb_checkpoints
+**/The battle memory of*.txt
