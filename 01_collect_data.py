@@ -1,14 +1,5 @@
 # -*- coding:utf-8 -*-
 
-# 按 ‘T’ 开始
-# Press 'T' to start
-
-# 按 ‘T’ 暂停\继续
-# you can also press 'T' to pause or continue
-
-# 按 ‘P’ 结束并保存
-# Press 'P' to stop and save
-
 import os
 import shutil
 import time
