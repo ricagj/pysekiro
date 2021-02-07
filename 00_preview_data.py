@@ -35,8 +35,8 @@ for img, cmd in data:
     
     cv2.imshow('img', img)
     
-    # x, x_w, y, y_h. 这些数据获取自 get_vertices.py
-    # x, x_w, y, y_h. Get this data from get_vertices.py
+    # x, x_w, y, y_h. 这些数据获取自 getvertices.py
+    # x, x_w, y, y_h. Get this data from getvertices.py
     cv2.imshow('roi(img)', roi(img, x=190, x_w=290, y=30, y_h=230))
 
     Remaining -= 1
