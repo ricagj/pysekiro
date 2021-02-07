@@ -24,3 +24,6 @@ pip install tensorflow>=2.0
 
 ### Preview data
 ![preview data](./00_preview_data.gif)
+
+### Collect data
+![collect data](./01_collect_data.gif)

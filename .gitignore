@@ -1,4 +1,5 @@
 **/*.pyc
+**/*.npy
 **/The battle memory of*.txt
 **/sekiro.h5
 **/logs/**
