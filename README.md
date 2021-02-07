@@ -19,3 +19,8 @@ conda install pywin32
 pip install opencv-python>=4.0
 pip install tensorflow>=2.0
 ~~~
+
+# Tutorial
+
+### Preview data
+![preview data](./00_preview_data.gif)
