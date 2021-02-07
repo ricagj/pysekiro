@@ -27,3 +27,7 @@ pip install tensorflow>=2.0
 
 ### Collect data
 ![collect data](./01_collect_data.gif)
+- Description
+    - 按 ‘T’ 开始 | Press 'T' to start
+    - 按 ‘T’ 暂停\继续 | You can also press 'T' to pause or continue.
+    - 按 ‘P’ 结束并保存 | Press 'P' to stop and save.
