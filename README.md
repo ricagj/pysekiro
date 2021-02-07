@@ -83,3 +83,20 @@ python .\03_test_model.py
     - 按 ‘T’ 开始 | Press 'T' to start.
     - 按 ‘T’ 暂停\继续 | You can also press 'T' to pause or continue.
     - 按 ‘P’ 结束并保存 | Press 'P' to stop and save.
+
+### getvertices.py
+~~~shell
+python .\getvertices.py
+~~~
+![demo_01](./demo_01.gif)  
+![demo_02](./demo_02.gif)  
+在弹出来的窗口中按顺序依次点击左下，左上，右上，右下，然后按键盘上的“ESC”键。  
+In the pop-up window, click bottom left, top left, top right, bottom right in order, and then press the "ESC" key on the keyboard.  
+
+我们可以用它来获取人物的状态，例如HP，躯干。  
+We can use it to get the status of the character, such as HP, posture.
+
+~~~shell
+python .\getstatus.py
+~~~
+![getstatus](./getstatus.gif) 
