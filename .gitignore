@@ -1,5 +1,5 @@
 **/*.pyc
 **/*.npy
-**/The battle memory of*.txt
-**/sekiro.h5
 **/logs/**
+**/.ipynb_checkpoints
+**/.virtual_documents

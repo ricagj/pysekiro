@@ -26,14 +26,13 @@ pip install tensorflow>=2.0
 conda activate pysekiro
 ~~~
 
-### 数据预览 | Preview data
+## 数据预览 | Preview data
 ~~~shell
 python .\00_preview_data.py
 ~~~
-![preview data](./00_preview_data.gif)
+![preview data](./Toturial_gif/00_preview_data.gif)
 
-### 收集数据 | Collect data
-![collect data](./01_collect_data.gif)
+## 收集数据 | Collect data
 - Some game settings
     - 打开游戏 《只狼：影逝二度》
         - 设定
@@ -61,8 +60,10 @@ python .\00_preview_data.py
 ~~~shell
 python .\01_collect_data.py
 ~~~
+![collect data](./Toturial_gif/01_collect_data.gif)
+log in .\The_battle_memory_of_Genichiro_Ashina.txt  
 
-### 训练模型 | Train_model
+## 训练模型 | Train_model
 ~~~shell
 python .\02_train_model.py
 ~~~
@@ -75,7 +76,7 @@ tensorboard --logdir=.\logs
 点击 http://localhost:6006/ 进入 TensorBoard。  
 Click http://localhost:6006/ to enter TensorBoard.  
 
-### 测试模型 | Test model
+## 测试模型 | Test model
 ~~~shell
 python .\03_test_model.py
 ~~~
@@ -84,19 +85,22 @@ python .\03_test_model.py
     - 按 ‘T’ 暂停\继续 | You can also press 'T' to pause or continue.
     - 按 ‘P’ 结束并保存 | Press 'P' to stop and save.
 
-### getvertices.py
+## getvertices.py
 ~~~shell
 python .\getvertices.py
 ~~~
-![demo_01](./demo_01.gif)  
-![demo_02](./demo_02.gif)  
+![demo_01](./Toturial_gif/demo_01.gif)   
 在弹出来的窗口中按顺序依次点击左下，左上，右上，右下，然后按键盘上的“ESC”键。  
 In the pop-up window, click bottom left, top left, top right, bottom right in order, and then press the "ESC" key on the keyboard.  
 
 我们可以用它来获取人物的状态，例如HP，躯干。  
-We can use it to get the status of the character, such as HP, posture.
+We can use it to get the status of the character, such as HP, posture.  
 
-~~~shell
-python .\getstatus.py
-~~~
-![getstatus](./getstatus.gif) 
+##### 获取 只狼 HP | Get Sekiro HP
+![get_Sekiro_HP](./Toturial_gif/get_Sekiro_HP.gif)  
+##### 获取 只狼 架势 | Get Sekiro Posture
+![get_Sekiro_Posture](./Toturial_gif/get_Sekiro_Posture.gif)  
+##### 获取 Boss HP | Get Boss HP
+![get_Boss_HP](./Toturial_gif/get_Boss_HP.gif)  
+##### 获取 Boss 架势 | Get Boss Posture
+![get_Boss_Posture](./Toturial_gif/get_Boss_Posture.gif)  

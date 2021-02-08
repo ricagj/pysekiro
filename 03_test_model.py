@@ -8,12 +8,18 @@ import numpy as np
 
 from directkeys import PressKey,ReleaseKey, W, J, K, LSHIFT, SPACE
 from getkeys import key_check
+from getvertices import roi
 from grabscreen import grab_screen
 
+# ---*---
 
-def roi(img, x, x_w, y, y_h):
-    return img[y:y_h, x:x_w]
+import tensorflow as tf
+gpus = tf.config.experimental.list_physical_devices("GPU")
+if gpus:
+    tf.config.experimental.set_memory_growth(gpus[0], True)
+    print(tf.config.experimental.get_device_details(gpus[0])['device_name'])
 
+# ---*---
 
 def ReleaseAllKey():
     ReleaseKey(J)
@@ -46,17 +52,12 @@ def Jump():
     time.sleep(0.05)
     ReleaseAllKey()
 
-
-import tensorflow as tf
-gpus = tf.config.experimental.list_physical_devices("GPU")
-if gpus:
-    tf.config.experimental.set_memory_growth(gpus[0], True)
-    print(tf.config.experimental.get_device_details(gpus[0])['device_name'])
-
+# ---*---
 
 MODEL_NAME = 'sekiro.h5'
 model = tf.keras.models.load_model(MODEL_NAME)
 
+# ---*---
 
 GAME_WIDTH = 1280
 GAME_HEIGHT = 720
@@ -78,13 +79,10 @@ STANDARD_HEIGHT = 270
 FRAME_COUNT = 1
 
 def main():
-
-    print('Already!')
+    global model, x, x_w, y, y_h
+    print('Ready!')
     
     paused = True
-    
-    wait = False
-    wait_times = 0
 
     while True:
         
@@ -99,36 +97,34 @@ def main():
 
             # 提取ROI, 然后输入模型进行预测
             # Extract ROI, then input the model to predict
-            screen = roi(screen, x=190, x_w=290, y=30, y_h=230)
+            screen = roi(screen, x, x_w, y, y_h)
             prediction = model.predict([screen.reshape(-1, ROI_WIDTH, ROI_HEIGHT, FRAME_COUNT)])[0]
 
-            # WEIGHTS = [1.0, 1.0, 1.0, 1.0, 1.0]
-            #prediction = np.array(prediction) * np.array(WEIGHTS)
-
-            prediction = np.array(prediction)
+            WEIGHTS = [1.0, 1.0, 1.0, 1.0, 0.01]
+            prediction = np.array(prediction) * np.array(WEIGHTS)
             
             mode_choice = np.argmax(prediction)
                 
             if   mode_choice == 0:
-                choice_picked = '攻击 | Attack'
+                choice_picked = 'Attack'     # 攻击
                 Attack()
 
             elif mode_choice == 1:
-                choice_picked = '防御 | Deflect'
+                choice_picked = 'Deflect'    # 弹反
                 Deflect()
 
             elif mode_choice == 2:
-                choice_picked = '垫步 | Step Dodge'
+                choice_picked = 'Step Dodge' # 垫步
                 Stop_Dodge()
 
             elif mode_choice == 3:
-                choice_picked = '跳跃 | Jump'
+                choice_picked = 'Jump'       # 跳跃
                 Jump()
 
             elif mode_choice == 4:
-                choice_picked = '其他 | Other'
+                choice_picked = 'O'      # 其他
             
-            print(f'\rloop took {round(time.time()-last_time, 3):>5} seconds. Choice: {choice_picked:<23}', end='')
+            print(f'\rLoop took {round(time.time()-last_time, 3):>5} seconds. Choice: {choice_picked:<11}', end='')
         
         # 再次检测按键
         # key check again
@@ -139,7 +135,7 @@ def main():
         if 'T' in keys:
             if paused:
                 paused = False
-                print('\nstarting!')
+                print('\nStarting!')
                 time.sleep(1)
             else:
                 paused = True
@@ -152,6 +148,8 @@ def main():
             cv2.destroyAllWindows()
             break
     
-    print('\ndone!')
+    print('\nDone!')
+
+# ---*---
 
 main() 

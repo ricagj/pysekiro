@@ -6,14 +6,15 @@ import time
 
 import cv2
 import numpy as np
+np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
 
 from getkeys import key_check
 from grabscreen import grab_screen
 
-
+# ---*---
 
 j  = [1,0,0,0,0] # 攻击 | Attack
-k  = [0,1,0,0,0] # 防御 | Deflect
+k  = [0,1,0,0,0] # 弹反 | Deflect
 ls = [0,0,1,0,0] # 垫步 | Step Dodge
 sp = [0,0,0,1,0] # 跳跃 | Jump
 ot = [0,0,0,0,1] # 其他 | Other
@@ -23,22 +24,22 @@ def keys_to_output(keys):
 
     if   'J' in keys:
         output = j
-        motion = '攻击 | Attack'
+        motion = 'Attack'     # 攻击
     elif 'K' in keys:
         output = k
-        motion = '防御 | Deflect'
+        motion = 'Deflect'    # 弹反
     elif 'LSHIFT' in keys:
         output = ls
-        motion = '垫步 | Step Dodge'
+        motion = 'Step Dodge' # 垫步
     elif 'SPACE' in keys or ('K' in keys and 'J' in keys):    # 'K' + 'J' = 'Sakura Dance' ≈ jump
         output = sp
-        motion = '跳跃 | Jump'
+        motion = 'Jump'       # 跳跃
     else:
         output = ot
-        motion = '其他 | Other'
+        motion = 'O'      # 其他
     return output, motion
 
-
+# ---*---
 
 # find_max_num() 和 merge_data() 是保存数据时用的代码
 # find_max_num() and merge_data() are the codes used when saving data 
@@ -73,7 +74,7 @@ def merge_data(boss):
     
     shutil.rmtree(path_1)
 
-
+# ---*---
 
 # 游戏窗口大小
 GAME_WIDTH = 1280
@@ -127,9 +128,9 @@ def battle_with_(boss):
             
             # 记录战斗数据
             # Record combat data
-            battle_log = f'loop took {round(time.time()-last_time, 3):>5} seconds. motion {motion:<18}. keys {str(keys):<35}'
+            battle_log = f'\rloop took {round(time.time()-last_time, 3):>5} seconds. motion {motion:<11}. keys {str(keys):<35}'
             battle_logs.append(battle_log+'\n')
-            print('\r'+battle_log, end='')
+            print(battle_log, end='')
         
         # 再次检测按键
         # key check again
@@ -140,7 +141,7 @@ def battle_with_(boss):
         if 'T' in keys:
             if paused:
                 paused = False
-                print('\nstarting!')
+                print('\nStarting!')
                 time.sleep(1)
             else:
                 paused = True
@@ -153,7 +154,7 @@ def battle_with_(boss):
             np.save(save_path, training_data)
             break
     
-    print('\n\nstop, please wait')
+    print('\n\nStop, please wait')
     
     # 合并临时数据
     # Merge temporary data
@@ -161,13 +162,14 @@ def battle_with_(boss):
     
     # 写入战斗数据到txt
     # Write battle data to TXT
-    with open(f'The battle memory of {boss}.txt', 'a+') as log:
+    with open(f'The_battle_memory_of_{boss}.txt', 'a+') as log:
         log.write('\n\n\n\n\n')
         for log_data in battle_logs:
             log.write(log_data)
 
-    print('done!')
+    print('Done!')
 
+# ---*---
 
 if __name__ == '__main__':
     boss1 = 'Genichiro_Ashina' # 苇名弦一郎

@@ -5,7 +5,10 @@ import os
 import cv2
 import numpy as np
 
+from getvertices import roi
+from models import resnet
 
+# ---*---
 
 import tensorflow as tf
 gpus = tf.config.experimental.list_physical_devices("GPU")
@@ -13,24 +16,7 @@ if gpus:
     tf.config.experimental.set_memory_growth(gpus[0], True)
     print(tf.config.experimental.get_device_details(gpus[0])['device_name'])
 
-
-
-def get_model(width, height, frame_count, outputs):
-    base_model = tf.keras.applications.Xception(include_top=False, weights=None, input_shape=(width, height, frame_count), pooling='avg')
-    
-    output = base_model.output
-    output = tf.keras.layers.Dense(outputs, activation=tf.nn.softmax)(output)
-    
-    model = tf.keras.models.Model(inputs = base_model.input, outputs = output)
-    
-    model.compile(
-        optimizer = tf.keras.optimizers.Adam(),
-        loss = tf.keras.losses.CategoricalCrossentropy(),
-        metrics = ['accuracy']
-    )
-    return model
-
-
+# ---*---
 
 # x, x_w, y, y_h. 这些数据获取自 getvertices.py
 # x, x_w, y, y_h. Get this data from getvertices.py
@@ -47,12 +33,7 @@ MODEL_NAME = 'sekiro.h5'
 model = get_model(ROI_WIDTH, ROI_HEIGHT, FRAME_COUNT, outputs=5)
 # model.summary()
 
-
-
-def roi(img, x, x_w, y, y_h):
-    return img[y:y_h, x:x_w]
-
-
+# ---*---
 
 def train(boss, start, end):
     global model, x, x_w, y, y_h
@@ -63,13 +44,12 @@ def train(boss, start, end):
         # 加载数据
         # Load data
         train_data = np.load(os.path.join('The_battle_memory', boss, filename), allow_pickle=True)
-        print(filename, '总数据量：', len(train_data))
+        print(filename, 'Total data volume：', len(train_data))
 
         # 拆分数据和标签
         # Split data and labels
         X = np.array([roi(i[0], x, x_w, y, y_h) for i in train_data]).reshape(-1, ROI_WIDTH, ROI_HEIGHT, FRAME_COUNT)
         Y = np.array([i[1] for i in train_data])
-        print('训练数据量：', len(Y))
 
         # 用 TensorBoard 可视化训练过程
         # Visualize the training process with TensorBoard
@@ -81,7 +61,7 @@ def train(boss, start, end):
 
         # 模型训练
         # Model training
-        model.fit(X, Y, batch_size=16, epochs=3, verbose=1, callbacks=[tensorboard])
+        model.fit(X, Y, batch_size=64, epochs=2, verbose=1, callbacks=[tensorboard])
 
         # 保存模型
         # Save model
@@ -91,14 +71,43 @@ def train(boss, start, end):
         # Reload the model
         model = tf.keras.models.load_model(MODEL_NAME)
 
+# ---*---
 
+def evaluate(boss, start, end):
+    global model, x, x_w, y, y_h
+    for i in range(start, end+1):
+
+        filename = f'training_data-{i}.npy'
+
+        # 加载数据
+        # Load data
+        train_data = np.load(os.path.join('The_battle_memory', boss, filename), allow_pickle=True)
+        print(filename, 'Total data volume：' len(train_data))
+
+        # 拆分数据和标签
+        # Split data and labels
+        X = np.array([roi(i[0], x, x_w, y, y_h) for i in train_data]).reshape(-1, ROI_WIDTH, ROI_HEIGHT, FRAME_COUNT)
+        Y = np.array([i[1] for i in train_data])
+
+        # 用 TensorBoard 可视化训练过程
+        # Visualize the training process with TensorBoard
+        tensorboard = tf.keras.callbacks.TensorBoard(
+            log_dir = os.path.join('evaluate_logs', filename[:-4]),
+            histogram_freq = 1,
+            update_freq='batch'
+        )
+
+        model.evaluate(X, Y, batch_size=1, callbacks=[tensorboard])
+
+# ---*---
 
 boss1 = 'Genichiro_Ashina' # 苇名弦一郎
 boss2 = 'Inner_Genichiro'  # 心中的弦一郎
 boss3 = 'Inner_Isshin'     # 心中的一心
 boss4 = 'Isshin,_the_Sword_Saint' # 剑圣 苇名一心
 
-train(boss1, start=1, end=1)
+train(boss1, start=1, end=90)
+evaluate(boss1, start=91 end=101)
 
 """
 ./The_battle_memory/Genichiro_Ashina

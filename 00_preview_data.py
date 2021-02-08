@@ -1,46 +1,44 @@
-import os
+# -*- coding:utf-8 -*-
 
-import cv2
-import numpy as np
-import pandas as pd
+from getvertices import *
 
+# ---*---
 
-def roi(img, x, x_w, y, y_h):
-    return img[y:y_h, x:x_w]
-
-
-boss1 = 'Genichiro_Ashina' # 苇名弦一郎
-boss2 = 'Inner_Genichiro'  # 心中的弦一郎
-boss3 = 'Inner_Isshin'     # 心中的一心
-boss4 = 'Isshin,_the_Sword_Saint' # 剑圣 苇名一心
-
-boss = boss1
+boss = 'Genichiro_Ashina' # 苇名弦一郎
 data = np.load(os.path.join('The_battle_memory', boss, f'training_data-{1}.npy'), allow_pickle=True)
-
-
 Remaining = len(data)
+
+# ---*---
+
+# x, x_w, y, y_h. 这些数据获取自 getvertices.py
+# x, x_w, y, y_h. Get this data from getvertices.py
+x=190
+x_w=290
+y=30
+y_h=230
+
+# ---*---
+
+print('Press "q" to quit. ') # 按q键离开。
 
 for img, cmd in data:
     
     if   cmd == [1,0,0,0,0]:
-        motion = '攻击 | Attack'
+        motion = 'Attack'     # 攻击
     elif cmd == [0,1,0,0,0]:
-        motion = '防御 | Deflect'
+        motion = 'Deflect'    # 弹反
     elif cmd == [0,0,1,0,0]:
-        motion = '垫步 | Step Dodge'
+        motion = 'Step Dodge' # 垫步
     elif cmd == [0,0,0,1,0]:
-        motion = '跳跃 | Jump'
+        motion = 'Jump'       # 跳跃
     elif cmd == [0,0,0,0,1]:
-        motion = '其他 | Other'
+        motion = 'O'      # 其他
     
     cv2.imshow('img', img)
-    
-    # x, x_w, y, y_h. 这些数据获取自 getvertices.py
-    # x, x_w, y, y_h. Get this data from getvertices.py
-    cv2.imshow('roi(img)', roi(img, x=190, x_w=290, y=30, y_h=230))
+    cv2.imshow('roi(img)', roi(img, x, x_w, y, y_h))
 
     Remaining -= 1
-    print(f'\r{Remaining:<10}{motion:<15}', end='')
+    print(f'\r{Remaining:<6}{motion:<11}', end='')
     cv2.waitKey(2)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         cv2.destroyAllWindows()
