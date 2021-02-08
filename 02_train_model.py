@@ -30,7 +30,7 @@ ROI_HEIGHT = y_h - y
 FRAME_COUNT = 1
 
 MODEL_NAME = 'sekiro.h5'
-model = get_model(ROI_WIDTH, ROI_HEIGHT, FRAME_COUNT, outputs=5)
+model = resnet(ROI_WIDTH, ROI_HEIGHT, FRAME_COUNT, output=5)
 # model.summary()
 
 # ---*---
@@ -82,7 +82,7 @@ def evaluate(boss, start, end):
         # 加载数据
         # Load data
         train_data = np.load(os.path.join('The_battle_memory', boss, filename), allow_pickle=True)
-        print(filename, 'Total data volume：' len(train_data))
+        print(filename, 'Total data volume：', len(train_data))
 
         # 拆分数据和标签
         # Split data and labels
@@ -107,7 +107,7 @@ boss3 = 'Inner_Isshin'     # 心中的一心
 boss4 = 'Isshin,_the_Sword_Saint' # 剑圣 苇名一心
 
 train(boss1, start=1, end=90)
-evaluate(boss1, start=91 end=101)
+evaluate(boss1, start=91, end=101)
 
 """
 ./The_battle_memory/Genichiro_Ashina
