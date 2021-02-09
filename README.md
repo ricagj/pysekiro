@@ -92,10 +92,10 @@ Click http://localhost:6006/ to enter TensorBoard.
 ~~~shell
 python .\03_test_model.py
 ~~~
-- 说明 | Description
-    - 按 ‘T’ 开始 | Press 'T' to start.
-    - 按 ‘T’ 暂停\继续 | You can also press 'T' to pause or continue.
-    - 按 ‘P’ 结束并保存 | Press 'P' to stop and save.
+- Description
+    - Press 'T' to start.
+    - You can also press 'T' to pause or continue.
+    - Press 'P' to stop.
 
 ## getvertices.py
 ~~~shell

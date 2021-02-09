@@ -92,10 +92,10 @@ tensorboard --logdir=.\logs
 ~~~shell
 python .\03_test_model.py
 ~~~
-- Description
-    - Press 'T' to start.
-    - You can also press 'T' to pause or continue.
-    - Press 'P' to stop and save.
+- 说明
+    - 按 ‘T’ 开始
+    - 按 ‘T’ 暂停\继续
+    - 按 ‘P’ 结束
 
 ## getvertices.py
 ~~~shell
