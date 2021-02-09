@@ -108,23 +108,3 @@ boss4 = 'Isshin,_the_Sword_Saint' # 剑圣 苇名一心
 
 train(boss1, start=1, end=90)
 evaluate(boss1, start=91, end=101)
-
-"""
-./The_battle_memory/Genichiro_Ashina
-    training_data-1.npy
-    training_data-2.npy
-    ...
-    training_data-100.npy
-    
-依次读取数据集，逐个训练。
-当然，也可以指定开始和结束的文件。
-e.g.
-    start=15, end=36
-怎么选择取决于你。
-
-Read the dataset in turn and train one by one.
-Of course, you can also specify the start and end files.
-e.g. 
-    start=15, end=36
-It's up to you to choose.
-"""
