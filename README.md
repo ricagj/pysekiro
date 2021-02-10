@@ -35,7 +35,19 @@ However, the model currently has only basic combat capabilities, and has no stre
 
 # Preparation
 
-#### Install Anaconda3 first
+#### Game settings
+
+- Open the game 《Sekiro™ Shadows Die Twice》
+    - Options
+        - Key Config
+            - Attack Action
+                - Attack    keyboard    J
+                - Deflect, (Hold) Gurad    keyboard    K
+        - Graphics Options
+            - Screen Mode    Windowed
+            - Screen Resolution    1280 x 720
+
+#### Install Anaconda3
 https://www.anaconda.com/  
 
 #### Create a virtual environment and install dependencies
@@ -62,16 +74,7 @@ python .\00_preview_data.py
 ![preview data](./Toturial_gif/00_preview_data.gif)  
 
 ## Collect data
-- Some game settings
-    - Open the game 《Sekiro™ Shadows Die Twice》
-        - Options
-            - Key Config
-                - Attack Action
-                    - Attack    keyboard    J
-                    - Deflect, (Hold) Gurad    keyboard    K
-            - Graphics Options
-                - Screen Mode    Windowed
-                - Screen Resolution    1280 x 720
+
 - Description
     - Press 'T' to start.
     	- Press 'T' to pause or continue.
