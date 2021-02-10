@@ -6,7 +6,7 @@
     <a href="https://github.com/ricagj/pysekiro/blob/main/README_CN.md">中文</a>
 </p>
 
-#### total 76.4 MB
+#### total 113 MB
 
 # Reference
 https://github.com/Sentdex/pygta5  
