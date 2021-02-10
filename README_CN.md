@@ -6,6 +6,8 @@
     <a>中文</a>
 </p>
 
+#### 共计 76.4 MB
+
 # 参考
 https://github.com/Sentdex/pygta5  
 https://github.com/analoganddigital/sekiro_tensorflow  
@@ -27,9 +29,25 @@ https://github.com/analoganddigital/sekiro_tensorflow
 # 下一个版本
 https://github.com/ricagj/pysekiro_with_RL  
 
+# 模型权重已经上传( sekiro_weights.h5 )
+对于想直接看结果的朋友，可以直接运行 03_test_model.py。  
+不过目前该模型只具备基本的战斗能力，还**没有实力能够打败**目标苇名弦一郎。  
+
 # 准备
 
-#### 先安装 Anaconda3
+#### 游戏设置
+
+- 打开游戏 《只狼：影逝二度》
+    - 设定
+        - 按键设置
+            - 攻击动作
+                - 攻击    键盘    J
+                - 防御    键盘    K
+        - 图像设定
+            - 屏幕模式    窗口
+            - 屏幕分辨率    1280 x 720
+
+#### 安装 Anaconda3
 https://www.anaconda.com/  
 
 #### 创建虚拟环境和安装依赖
@@ -56,16 +74,7 @@ python .\00_preview_data.py
 ![preview data](./Toturial_gif/00_preview_data.gif)  
 
 ## 收集数据
-- 一些游戏设置
-    - 打开游戏 《只狼：影逝二度》
-        - 设定
-            - 按键设置
-                - 攻击动作
-                    - 攻击    键盘    J
-                    - 防御    键盘    K
-            - 图像设定
-                - 屏幕模式    窗口
-                - 屏幕分辨率    1280 x 720
+
 - 说明
     - 按 ‘T’ 开始
         - 按 ‘T’ 暂停\继续

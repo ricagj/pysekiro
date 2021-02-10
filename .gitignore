@@ -1,6 +1,4 @@
 **/*.pyc
-**/*.npy
-**/*.h5
 **/logs/**
 **/.ipynb_checkpoints
 **/.virtual_documents

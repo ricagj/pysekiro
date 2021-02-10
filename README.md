@@ -6,6 +6,8 @@
     <a href="https://github.com/ricagj/pysekiro/blob/main/README_CN.md">中文</a>
 </p>
 
+#### total 76.4 MB
+
 # Reference
 https://github.com/Sentdex/pygta5  
 https://github.com/analoganddigital/sekiro_tensorflow  
@@ -26,6 +28,10 @@ Finally, thanks to Sentdex and analoganddigital, thanks to them I was able to co
 
 # Next Version
 https://github.com/ricagj/pysekiro_with_RL  
+
+# Model weights have been uploaded ( sekiro_weights.h5 )
+For those who want to see the results directly, you can run 03_test_model.py directly.  
+However, the model currently has only basic combat capabilities, and has no strength to defeat the target, Shunichiro Ashina.  
 
 # Preparation
 

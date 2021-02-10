@@ -10,6 +10,7 @@ from directkeys import PressKey,ReleaseKey, W, J, K, LSHIFT, SPACE
 from getkeys import key_check
 from getvertices import roi
 from grabscreen import grab_screen
+from models import resnet
 
 # ---*---
 
@@ -37,25 +38,20 @@ def Attack():
 def Deflect():
     PressKey(W)
     PressKey(K)
-    time.sleep(0.05)
+    time.sleep(0.1)
     ReleaseAllKey()
 
 def Stop_Dodge():
     PressKey(W)
     PressKey(LSHIFT)
-    time.sleep(0.05)
+    time.sleep(0.03)
     ReleaseAllKey()
 
 def Jump():
     PressKey(W)
     PressKey(SPACE)
-    time.sleep(0.05)
+    time.sleep(0.03)
     ReleaseAllKey()
-
-# ---*---
-
-MODEL_NAME = 'sekiro.h5'
-model = tf.keras.models.load_model(MODEL_NAME)
 
 # ---*---
 
@@ -77,6 +73,14 @@ STANDARD_WIDTH = 480
 STANDARD_HEIGHT = 270
 
 FRAME_COUNT = 1
+
+# ---*---
+
+MODEL_WEIGHTS_NAME = 'sekiro_weights.h5'
+model = resnet(ROI_WIDTH, ROI_HEIGHT, FRAME_COUNT, output=5)
+model.load_weights(MODEL_WEIGHTS_NAME)
+
+# ---*---
 
 def main():
     global model, x, x_w, y, y_h
@@ -100,11 +104,14 @@ def main():
             screen = roi(screen, x, x_w, y, y_h)
             prediction = model.predict([screen.reshape(-1, ROI_WIDTH, ROI_HEIGHT, FRAME_COUNT)])[0]
 
-            WEIGHTS = [1.0, 1.0, 1.0, 1.0, 0.01]
+            # cv2.imshow("screen", screen)
+            # cv2.waitKey(1)
+
+            WEIGHTS = [0.1, 2.0, 20.0, 10.0, 0.01]
             prediction = np.array(prediction) * np.array(WEIGHTS)
             
             mode_choice = np.argmax(prediction)
-                
+            
             if   mode_choice == 0:
                 choice_picked = 'Attack'     # 攻击
                 Attack()
@@ -140,16 +147,18 @@ def main():
             else:
                 paused = True
                 print('\nPausing!')
+                # cv2.destroyAllWindows()
                 time.sleep(1)
         
         # 按 ‘P’ 结束
         # Press 'P' to stop
         if 'P' in keys:
-            cv2.destroyAllWindows()
+            # cv2.destroyAllWindows()
             break
     
     print('\nDone!')
 
 # ---*---
 
-main() 
+if __name__ == '__main__':
+    main()

@@ -29,7 +29,7 @@ ROI_WIDTH = x_w - x
 ROI_HEIGHT = y_h - y
 FRAME_COUNT = 1
 
-MODEL_NAME = 'sekiro.h5'
+MODEL_WEIGHTS_NAME = 'sekiro_weights.h5'
 model = resnet(ROI_WIDTH, ROI_HEIGHT, FRAME_COUNT, output=5)
 # model.summary()
 
@@ -65,11 +65,7 @@ def train(boss, start, end):
 
         # 保存模型
         # Save model
-        model.save(MODEL_NAME)
-
-        # 重新加载模型
-        # Reload the model
-        model = tf.keras.models.load_model(MODEL_NAME)
+        model.save_weights(MODEL_WEIGHTS_NAME)
 
 # ---*---
 
@@ -81,13 +77,13 @@ def evaluate(boss, start, end):
 
         # 加载数据
         # Load data
-        train_data = np.load(os.path.join('The_battle_memory', boss, filename), allow_pickle=True)
-        print(filename, 'Total data volume：', len(train_data))
+        test_data = np.load(os.path.join('The_battle_memory', boss, filename), allow_pickle=True)
+        print(filename, 'Total data volume：', len(test_data))
 
         # 拆分数据和标签
         # Split data and labels
-        X = np.array([roi(i[0], x, x_w, y, y_h) for i in train_data]).reshape(-1, ROI_WIDTH, ROI_HEIGHT, FRAME_COUNT)
-        Y = np.array([i[1] for i in train_data])
+        X = np.array([roi(i[0], x, x_w, y, y_h) for i in test_data]).reshape(-1, ROI_WIDTH, ROI_HEIGHT, FRAME_COUNT)
+        Y = np.array([i[1] for i in test_data])
 
         # 用 TensorBoard 可视化训练过程
         # Visualize the training process with TensorBoard
