@@ -1,58 +1,0 @@
-
-
-
-
-
-
-
-
-
-
-loop took 0.054 seconds. motion Attack     . keys ['J']                              
-loop took 0.082 seconds. motion O          . keys []                                 
-loop took  0.07 seconds. motion O          . keys []                                 
-loop took  0.08 seconds. motion O          . keys []                                 
-loop took 0.074 seconds. motion Attack     . keys ['J']                              
-loop took 0.074 seconds. motion Attack     . keys ['J']                              
-loop took 0.082 seconds. motion O          . keys []                                 
-loop took 0.083 seconds. motion O          . keys []                                 
-loop took 0.053 seconds. motion O          . keys []                                 
-loop took 0.055 seconds. motion O          . keys []                                 
-loop took 0.073 seconds. motion O          . keys []                                 
-loop took 0.087 seconds. motion O          . keys []                                 
-loop took 0.054 seconds. motion O          . keys []                                 
-loop took 0.056 seconds. motion O          . keys []                                 
-loop took 0.089 seconds. motion Deflect    . keys ['K']                              
-loop took 0.072 seconds. motion Deflect    . keys ['K']                              
-loop took 0.064 seconds. motion O          . keys []                                 
-loop took 0.082 seconds. motion O          . keys []                                 
-loop took 0.079 seconds. motion O          . keys []                                 
-loop took 0.064 seconds. motion O          . keys []                                 
-loop took 0.082 seconds. motion O          . keys []                                 
-loop took  0.09 seconds. motion O          . keys []                                 
-loop took 0.059 seconds. motion O          . keys []                                 
-loop took 0.083 seconds. motion O          . keys []                                 
-loop took 0.077 seconds. motion Jump       . keys ['SPACE']                          
-loop took 0.078 seconds. motion O          . keys []                                 
-loop took 0.082 seconds. motion O          . keys []                                 
-loop took 0.076 seconds. motion O          . keys []                                 
-loop took 0.074 seconds. motion O          . keys []                                 
-loop took 0.083 seconds. motion O          . keys []                                 
-loop took 0.078 seconds. motion O          . keys []                                 
-loop took 0.066 seconds. motion O          . keys []                                 
-loop took 0.078 seconds. motion O          . keys []                                 
-loop took 0.088 seconds. motion O          . keys []                                 
-loop took 0.072 seconds. motion O          . keys []                                 
-loop took  0.06 seconds. motion O          . keys []                                 
-loop took 0.086 seconds. motion O          . keys []                                 
-loop took 0.079 seconds. motion Step Dodge . keys ['LSHIFT']                         
-loop took 0.069 seconds. motion Step Dodge . keys ['LSHIFT']                         
-loop took 0.061 seconds. motion Step Dodge . keys ['LSHIFT']                         
-loop took  0.06 seconds. motion O          . keys []                                 
-loop took 0.079 seconds. motion O          . keys []                                 
-loop took 0.071 seconds. motion O          . keys []                                 
-loop took 0.061 seconds. motion O          . keys []                                 
-loop took 0.083 seconds. motion O          . keys []                                 
-loop took 0.054 seconds. motion O          . keys []                                 
-loop took 0.064 seconds. motion O          . keys []                                 
-loop took 0.086 seconds. motion O          . keys ['P']                              
